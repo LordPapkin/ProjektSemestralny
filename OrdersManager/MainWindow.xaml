@@ -8,12 +8,20 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem Header="TabItem">
+            <TabItem Header="Orders" Height="22" Margin="-2,0,-2,0" VerticalAlignment="Bottom">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnOrder" Content="Button" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
+                    <Button x:Name="btnOrder" Content="Add new order" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Customers">
+                <Grid x:Name="btn" Background="#FFE5E5E5">
+                    <Button x:Name="btnOpenAddCustomer" Content="Add new customer info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Suppliers">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Product">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>

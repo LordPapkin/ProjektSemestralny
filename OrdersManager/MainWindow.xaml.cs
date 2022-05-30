@@ -31,5 +31,11 @@ namespace OrdersManager
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.ShowDialog();
         }
+
+        private void btnOpenAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow customerWindow = new CustomerWindow();
+            customerWindow.ShowDialog();
+        }
     }
 }
