@@ -84,36 +84,35 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\Customer.cs">
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Orders.cs">
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+    <Compile Include="DataBase\Order.cs">
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\OrdersDataBaseModel.Context.cs">
+    <Compile Include="DataBase\OrdersDatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersDataBaseModel.Context.tt</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\OrdersDataBaseModel.cs">
+    <Compile Include="DataBase\OrdersDatabaseModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\OrdersDataBaseModel.Designer.cs">
+    <Compile Include="DataBase\OrdersDatabaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrdersDataBaseModel.edmx</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Product.cs">
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Suppliers.cs">
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+    <Compile Include="DataBase\Supplier.cs">
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\sysdiagrams.cs">
-      <DependentUpon>OrdersDataBaseModel.tt</DependentUpon>
+      <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\ViewModel.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Views\CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
@@ -160,12 +159,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataBase\OrdersDataBaseModel.edmx">
+    <EntityDeploy Include="DataBase\OrdersDatabaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OrdersDataBaseModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>OrdersDatabaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataBase\OrdersDataBaseModel.edmx.diagram">
-      <DependentUpon>OrdersDataBaseModel.edmx</DependentUpon>
+    <None Include="DataBase\OrdersDatabaseModel.edmx.diagram">
+      <DependentUpon>OrdersDatabaseModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,21 +175,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="DataBase\OrdersDatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrdersDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>OrdersDatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataBase\OrdersDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrdersDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>OrdersDatabaseModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBase\OrdersDataBaseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrdersDataBaseModel.edmx</DependentUpon>
-      <LastGenOutput>OrdersDataBaseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DataBase\OrdersDataBaseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrdersDataBaseModel.edmx</DependentUpon>
-      <LastGenOutput>OrdersDataBaseModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

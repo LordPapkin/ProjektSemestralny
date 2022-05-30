@@ -16,7 +16,7 @@ namespace OrdersManager.DataBase
     {
         public Customer()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Order = new HashSet<Order>();
         }
     
         public int CustomerID { get; set; }
@@ -27,6 +27,6 @@ namespace OrdersManager.DataBase
         public string BankName { get; set; }
         public string BankAccountNumber { get; set; }
     
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

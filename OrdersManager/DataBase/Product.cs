@@ -16,7 +16,7 @@ namespace OrdersManager.DataBase
     {
         public Product()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Order = new HashSet<Order>();
         }
     
         public int ProductID { get; set; }
@@ -25,6 +25,6 @@ namespace OrdersManager.DataBase
         public double VAT { get; set; }
         public decimal PriceBrutto { get; set; }
     
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

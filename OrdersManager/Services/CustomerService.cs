@@ -12,7 +12,7 @@ namespace OrdersManager.Services
         OrdersEntities db = new OrdersEntities();
         public void Save(Customer customer)
         {
-            db.Customer.Add(customer);
+            db.Customers.Add(customer);
             db.SaveChanges();
         }
     }

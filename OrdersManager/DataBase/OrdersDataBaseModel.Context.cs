@@ -26,9 +26,9 @@ namespace OrdersManager.DataBase
         }
     
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Suppliers> Suppliers { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OrdersManager.DataBase;
 
 namespace OrdersManager
 {
@@ -21,9 +22,11 @@ namespace OrdersManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        OrdersEntities db = new OrdersEntities();
         public MainWindow()
-        {
+        {            
             InitializeComponent();
+            customerGridControl.ItemsSource = db.Customers.ToList();
         }
 
         private void btnOrder_Click(object sender, RoutedEventArgs e)
@@ -36,6 +39,12 @@ namespace OrdersManager
         {
             CustomerWindow customerWindow = new CustomerWindow();
             customerWindow.ShowDialog();
+        }
+
+        public void RefreshCustomer()
+        {
+            customerGridControl.ItemsSource = db.Customers.ToList();
+            customerGridControl.Items.Refresh();
         }
     }
 }

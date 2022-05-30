@@ -12,21 +12,17 @@ namespace OrdersManager.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Suppliers
+    public partial class Order
     {
-        public Suppliers()
-        {
-            this.Orders = new HashSet<Orders>();
-        }
-    
+        public int OrderID { get; set; }
         public int SupplierID { get; set; }
-        public string CompanyName { get; set; }
-        public string Adress { get; set; }
-        public string NIP { get; set; }
-        public string PhoneNumber { get; set; }
-        public string BankName { get; set; }
-        public string BankAccountNumber { get; set; }
+        public int CustomerID { get; set; }
+        public int ProductID { get; set; }
+        public byte IsPay { get; set; }
+        public System.DateTime OrderDate { get; set; }
     
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }
