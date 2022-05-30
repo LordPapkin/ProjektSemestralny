@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OrdersManager.DataBase;
+using OrdersManager.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,31 @@ namespace OrdersManager.Views
     /// </summary>
     public partial class CustomerWindow : Window
     {
+        CustomerService customerService = new CustomerService();
         public CustomerWindow()
         {
             InitializeComponent();
+        }
+
+        private void Save()
+        {
+            Customer customer = new Customer()
+            {
+                CompanyName = textBoxCompanyName.Text,
+                Adress = textBoxAdress.Text,
+                NIP = textBoxNIP.Text,
+                PhoneNumber = textBoxPhoneNumber.Text,
+                BankName = textBoxBankName.Text,
+                BankAccountNumber = textBoxBankAccountNumber.Text,
+            };
+
+            customerService.Save(customer);
+        }
+
+        private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+            this.Close();
         }
     }
 }

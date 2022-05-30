@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrdersManager.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace OrdersManager.Services
 {
-    internal class CustomerService
+    public class CustomerService
     {
+        OrdersEntities db = new OrdersEntities();
+        public void Save(Customer customer)
+        {
+            db.Customer.Add(customer);
+            db.SaveChanges();
+        }
     }
 }

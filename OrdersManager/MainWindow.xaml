@@ -1,13 +1,18 @@
-﻿<Window x:Class="OrdersManager.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OrdersManager"
+        xmlns:DataBase="clr-namespace:OrdersManager.DataBase" x:Class="OrdersManager.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2">
             <TabItem Header="Orders" Height="22" Margin="-2,0,-2,0" VerticalAlignment="Bottom">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="btnOrder" Content="Add new order" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOrder_Click"/>
@@ -16,6 +21,10 @@
             <TabItem Header="Customers">
                 <Grid x:Name="btn" Background="#FFE5E5E5">
                     <Button x:Name="btnOpenAddCustomer" Content="Add new customer info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click"/>
+                    <DataGrid x:Name="CustomerGridControl" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="149,40,40,83">
+
+
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Suppliers">
