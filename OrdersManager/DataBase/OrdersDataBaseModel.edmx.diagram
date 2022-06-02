@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f23e85f7f8954948b2ed05b6cc33b949" Name="Diagram1">
-        <EntityTypeShape EntityType="OrdersModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrdersModel.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrdersModel.Product" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrdersModel.Supplier" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OrdersModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Customer" Width="1.5" PointX="1" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Order" Width="1.5" PointX="3.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Product" Width="1.5" PointX="3.875" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Supplier" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.sysdiagrams" Width="1.5" PointX="8.875" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="OrdersModel.FK_Orders_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="OrdersModel.FK_Orders_Product" ManuallyRouted="false" />
         <AssociationConnector Association="OrdersModel.FK_Orders_Suppliers" ManuallyRouted="false" />

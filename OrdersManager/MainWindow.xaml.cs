@@ -26,7 +26,9 @@ namespace OrdersManager
         public MainWindow()
         {            
             InitializeComponent();
-            customerGridControl.ItemsSource = db.Customers.ToList();
+            customerGridControl.ItemsSource = db.Customer.ToList();
+            supplierGridControl.ItemsSource = db.Supplier.ToList();
+            productGridControl.ItemsSource = db.Product.ToList();
         }
 
         private void btnOrder_Click(object sender, RoutedEventArgs e)
@@ -43,8 +45,13 @@ namespace OrdersManager
 
         public void RefreshCustomer()
         {
-            customerGridControl.ItemsSource = db.Customers.ToList();
+            customerGridControl.ItemsSource = db.Customer.ToList();
             customerGridControl.Items.Refresh();
+        }
+
+        private void customerGridControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

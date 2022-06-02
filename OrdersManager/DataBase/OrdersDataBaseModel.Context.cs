@@ -25,10 +25,10 @@ namespace OrdersManager.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Supplier> Supplier { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
