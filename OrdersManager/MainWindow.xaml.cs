@@ -43,6 +43,12 @@ namespace OrdersManager
             customerWindow.ShowDialog();
         }
 
+        private void btnOpenAddSupplier_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplierWindow = new SupplierWindow();
+            supplierWindow.ShowDialog();
+        }
+
         public void RefreshCustomer()
         {
             customerGridControl.ItemsSource = db.Customer.ToList();
@@ -53,5 +59,7 @@ namespace OrdersManager
         {
 
         }
+
+        
     }
 }
