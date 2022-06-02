@@ -32,7 +32,7 @@
             </TabItem>
             <TabItem Header="Product">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnOpenAddProduct" Content="Add new product info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnOpenAddProduct" Content="Add new product info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddProduct_Click"/>
                     <DataGrid x:Name="productGridControl" Margin="160,10,40,111" SelectionChanged="customerGridControl_SelectionChanged" IsReadOnly="True"/>
                 </Grid>
             </TabItem>
