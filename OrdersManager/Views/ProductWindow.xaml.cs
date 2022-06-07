@@ -34,8 +34,7 @@ namespace OrdersManager.Views
             tempPriceNetto = Convert.ToDecimal(textBoxPriceNetto.Text);
             tempVat = Convert.ToDouble(textBoxVat.Text)/100f;
             Product product = new Product()
-            {     
-                
+            {                     
                 Name = textBoxName.Text,
                 PriceNetto = tempPriceNetto,
                 VAT = tempVat,

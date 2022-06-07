@@ -114,6 +114,7 @@
       <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Views\CustomerWindow.xaml.cs">

@@ -15,5 +15,10 @@ namespace OrdersManager.Services
             db.Product.Add(product);
             db.SaveChanges();
         }
+
+        public List<Product> FindAll()
+        {
+            return db.Product.ToList();
+        }
     }
 }

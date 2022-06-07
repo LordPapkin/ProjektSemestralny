@@ -15,8 +15,11 @@ namespace OrdersManager.Services
             db.Supplier.Add(supplier);
             db.SaveChanges();
         }
-            
 
+        public List<Supplier> FindAll()
+        {
+            return db.Supplier.ToList();
+        }
 
     }
 }

@@ -15,25 +15,27 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
             <TabItem Header="Orders" Height="22" Margin="-2,0,-2,0" VerticalAlignment="Bottom">
-                <Grid Background="#FFE5E5E5">                    
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="btnOpenAddOrder" Content="Add Order" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddOrder_Click"/>
+                    <DataGrid x:Name="orderGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Customers">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnOpenAddCustomer" Content="Add new customer info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click" Grid.ColumnSpan="2"/>
-                    <DataGrid x:Name="customerGridControl" Margin="160,10,40,111" SelectionChanged="customerGridControl_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnOpenAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click" Grid.ColumnSpan="2"/>
+                    <DataGrid x:Name="customerGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Suppliers">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnOpenAddSupplier" Content="Add new supplier info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddSupplier_Click"/>
-                    <DataGrid x:Name="supplierGridControl" Margin="160,10,40,111" SelectionChanged="customerGridControl_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnOpenAddSupplier" Content="Add Supplier" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddSupplier_Click"/>
+                    <DataGrid x:Name="supplierGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Product">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnOpenAddProduct" Content="Add new product info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddProduct_Click"/>
-                    <DataGrid x:Name="productGridControl" Margin="160,10,40,111" SelectionChanged="customerGridControl_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnOpenAddProduct" Content="Add Product" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddProduct_Click"/>
+                    <DataGrid x:Name="productGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
                 </Grid>
             </TabItem>
         </TabControl>
