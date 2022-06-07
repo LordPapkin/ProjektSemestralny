@@ -113,12 +113,16 @@
     <Compile Include="DataBase\sysdiagrams.cs">
       <DependentUpon>OrdersDatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Views\CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderUpdateWindow.xaml.cs">
+      <DependentUpon>OrderUpdateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
@@ -142,6 +146,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrderUpdateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

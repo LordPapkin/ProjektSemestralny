@@ -20,6 +20,10 @@ namespace OrdersManager.Services
         {
             return db.Supplier.ToList();
         }
+        public Supplier FindOne(int id)
+        {
+            return db.Supplier.Find(id);
+        }
 
     }
 }

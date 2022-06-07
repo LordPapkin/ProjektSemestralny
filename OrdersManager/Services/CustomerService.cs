@@ -20,5 +20,10 @@ namespace OrdersManager.Services
         {
             return db.Customer.ToList();
         }
+
+        public Customer FindOne(int id)
+        {
+            return db.Customer.Find(id);
+        }
     }
 }

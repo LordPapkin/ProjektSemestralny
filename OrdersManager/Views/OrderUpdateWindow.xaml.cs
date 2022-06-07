@@ -1,4 +1,5 @@
 ﻿using OrdersManager.DataBase;
+using OrdersManager.Models;
 using OrdersManager.Services;
 using System;
 using System.Collections.Generic;
@@ -17,43 +18,49 @@ using System.Windows.Shapes;
 namespace OrdersManager.Views
 {
     /// <summary>
-    /// Interaction logic for OrderWindow.xaml
+    /// Interaction logic for OrderUpdateWindow.xaml
     /// </summary>
-    public partial class OrderWindow : Window
+    public partial class OrderUpdateWindow : Window
     {
+        OrderModel _orderModel;
+
         CustomerService customerService = new CustomerService();
         SupplierService supplierService = new SupplierService();
         ProductService productService = new ProductService();
         OrderService orderService = new OrderService();
 
-        public OrderWindow()
+        public OrderUpdateWindow(OrderModel model)
         {
             InitializeComponent();
+            _orderModel = model;
             PrepareComboBoxes();
+            PrepareToShow();
         }
 
-        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        private void PrepareToShow()
         {
-            Save();
-            this.Close();
+            var customer = customerService.FindOne(_orderModel.CustomerID);
+            var supplier = supplierService.FindOne(_orderModel.SupplierID);
+            var product = productService.FindOne(_orderModel.ProductID);
+
+            textBoxCustomerAdress.Text = customer.Adress;
+            textBoxCustomerNIP.Text = customer.NIP;
+            textBoxCustomerPhoneNumber.Text = customer.PhoneNumber;
+            textBoxCustomerBankName.Text = customer.BankName;
+            textBoxCustomerBankAccountNumber.Text = customer.BankAccountNumber;
+
+            textBoxSupplierAdress.Text = supplier.Adress;
+            textBoxSupplierNIP.Text = supplier.NIP;
+            textBoxSupplierPhoneNumber.Text = supplier.PhoneNumber;
+            textBoxSupplierBankName.Text = supplier.BankName;
+            textBoxSupplierBankAccountNumber.Text = supplier.BankAccountNumber;
+
+            textBoxProductPriceNetto.Text = product.PriceNetto.ToString();
+            textBoxProductVat.Text = product.VAT.ToString();
+            checkBoxOrderPaid.IsChecked = Convert.ToBoolean(_orderModel.IsPaid);
+            datePickerOrderDate.SelectedDate = _orderModel.OrderDate;
         }
 
-        private void Save()
-        {
-            var supplierId = comboBoxSupplier.SelectedItem as Supplier;
-            var customerId = comboBoxCustomer.SelectedItem as Customer;
-            var productId = comboBoxProduct.SelectedItem as Product;
-            Order order = new Order()
-            {
-                SupplierID = supplierId.SupplierID,
-                CustomerID = customerId.CustomerID,
-                ProductID = productId.ProductID,
-                IsPay = Convert.ToByte(checkBoxOrderPaid.IsChecked.Value),
-                OrderDate = datePickerOrderDate.SelectedDate.Value
-            };
-
-            orderService.Save(order);
-        }
         private void PrepareComboBoxes()
         {
             comboBoxCustomer.ItemsSource = customerService.FindAll();
@@ -61,10 +68,28 @@ namespace OrdersManager.Views
             comboBoxProduct.ItemsSource = productService.FindAll();
         }
 
+        private void Update()
+        {
+            var supplierId = comboBoxSupplier.SelectedItem as Supplier;
+            var customerId = comboBoxCustomer.SelectedItem as Customer;
+            var productId = comboBoxProduct.SelectedItem as Product;
+            Order order = new Order()
+            {
+                OrderID = _orderModel.OrderID,
+                SupplierID = supplierId.SupplierID,
+                CustomerID = customerId.CustomerID,
+                ProductID = productId.ProductID,
+                IsPay = Convert.ToByte(checkBoxOrderPaid.IsChecked.Value),
+                OrderDate = datePickerOrderDate.SelectedDate.Value
+            };
+
+            orderService.Update(order);
+        }
+
         private void comboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemCustomer = comboBoxCustomer.SelectedItem as Customer;
-            if(selectedItemCustomer != null)
+            if (selectedItemCustomer != null)
             {
                 textBoxCustomerAdress.Text = selectedItemCustomer.Adress;
                 textBoxCustomerNIP.Text = selectedItemCustomer.NIP;
@@ -77,7 +102,7 @@ namespace OrdersManager.Views
         private void comboBoxSupplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemSupplier = comboBoxSupplier.SelectedItem as Supplier;
-            if(selectedItemSupplier != null)
+            if (selectedItemSupplier != null)
             {
                 textBoxSupplierAdress.Text = selectedItemSupplier.Adress;
                 textBoxSupplierNIP.Text = selectedItemSupplier.NIP;
@@ -90,11 +115,17 @@ namespace OrdersManager.Views
         private void comboBoxProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemProduct = comboBoxProduct.SelectedItem as Product;
-            if(selectedItemProduct != null)
+            if (selectedItemProduct != null)
             {
                 textBoxProductPriceNetto.Text = selectedItemProduct.PriceNetto.ToString();
                 textBoxProductVat.Text = selectedItemProduct.VAT.ToString();
             }
+        }
+
+        private void btnUpdateOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Update();
+            this.Close();
         }
     }
 }

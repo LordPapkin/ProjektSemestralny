@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OrdersManager.DataBase;
+using OrdersManager.Models;
 
 namespace OrdersManager
 {
@@ -58,13 +59,32 @@ namespace OrdersManager
         {
             OrderWindow orderWindow = new OrderWindow();
             orderWindow.ShowDialog();
-        }
-        public void RefreshCustomer()
+        }  
+
+        private void btnRefreshOrder_Click(object sender, RoutedEventArgs e)
         {
-            customerGridControl.ItemsSource = db.Customer.ToList();
-            customerGridControl.Items.Refresh();
+            orderGridControl.ItemsSource = db.Order.ToList();
+            orderGridControl.Items.Refresh();
         }
 
-       
+        private void orderGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = orderGridControl.SelectedItem as Order;
+
+            OrderModel model = new OrderModel()
+            {
+                OrderID = selectedItem.OrderID,
+                CustomerID = selectedItem.CustomerID,
+                SupplierID = selectedItem.SupplierID,
+                ProductID = selectedItem.ProductID,
+                IsPaid = selectedItem.IsPay,
+                OrderDate = selectedItem.OrderDate
+            };
+
+            OrderUpdateWindow orderUpdateWindow = new OrderUpdateWindow(model);
+            orderUpdateWindow.ShowDialog();
+        }
+
+        
     }
 }

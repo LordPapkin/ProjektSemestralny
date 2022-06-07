@@ -1,0 +1,51 @@
+﻿<Window x:Class="OrdersManager.Views.OrderUpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrdersManager.Views"
+        mc:Ignorable="d"
+        Title="OrderUpdateWindow" Height="450" Width="830">
+    <Grid>
+        <Label Content="Customer Name" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adress" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="NIP" HorizontalAlignment="Left" Margin="30,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="30,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bank Name" HorizontalAlignment="Left" Margin="30,270,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="30,330,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxCustomer" HorizontalAlignment="Left" Margin="131,34,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding CustomerID}" DisplayMemberPath="CompanyName" SelectionChanged="comboBoxCustomer_SelectionChanged"/>
+        <TextBox x:Name="textBoxCustomerAdress" HorizontalAlignment="Left" Margin="80,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxCustomerNIP" HorizontalAlignment="Left" Margin="64,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxCustomerPhoneNumber" HorizontalAlignment="Left" Margin="126,214,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxCustomerBankName" HorizontalAlignment="Left" Margin="106,274,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxCustomerBankAccountNumber" HorizontalAlignment="Left" Margin="164,334,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+
+        <Label Content="Supplier Name" HorizontalAlignment="Left" Margin="297,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adress" HorizontalAlignment="Left" Margin="297,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="NIP" HorizontalAlignment="Left" Margin="297,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="297,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bank Name" HorizontalAlignment="Left" Margin="297,270,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="297,330,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxSupplier" HorizontalAlignment="Left" Margin="391,34,0,0" VerticalAlignment="Top" Width="120"  SelectedItem="{Binding SupplierID}" DisplayMemberPath="CompanyName" SelectionChanged="comboBoxSupplier_SelectionChanged"/>
+        <TextBox x:Name="textBoxSupplierAdress" HorizontalAlignment="Left" Margin="347,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxSupplierNIP" HorizontalAlignment="Left" Margin="331,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxSupplierPhoneNumber" HorizontalAlignment="Left" Margin="393,214,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxSupplierBankName" HorizontalAlignment="Left" Margin="373,274,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxSupplierBankAccountNumber" HorizontalAlignment="Left" Margin="431,334,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+
+        <Label Content="Product Name" HorizontalAlignment="Left" Margin="584,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="PriceNetto" HorizontalAlignment="Left" Margin="584,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="VAT&#xA;" HorizontalAlignment="Left" Margin="584,150,0,0" VerticalAlignment="Top"/>
+        <Label Content="Is Paid?" HorizontalAlignment="Left" Margin="584,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date Order" HorizontalAlignment="Left" Margin="584,270,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxProduct" HorizontalAlignment="Left" Margin="678,34,0,0" VerticalAlignment="Top" Width="120"  SelectedItem="{Binding ProductID}" DisplayMemberPath="Name" SelectionChanged="comboBoxProduct_SelectionChanged"/>
+        <TextBox x:Name="textBoxProductPriceNetto" HorizontalAlignment="Left" Margin="650,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxProductVat" HorizontalAlignment="Left" Margin="618,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="checkBoxOrderPaid" Content="CheckBox" HorizontalAlignment="Left" Margin="642,215,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datePickerOrderDate" HorizontalAlignment="Left" Margin="658,271,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdateOrder" Content="Update Order" HorizontalAlignment="Left" Margin="600,334,0,0" VerticalAlignment="Top" Click="btnUpdateOrder_Click"/>
+
+    </Grid>
+</Window>
