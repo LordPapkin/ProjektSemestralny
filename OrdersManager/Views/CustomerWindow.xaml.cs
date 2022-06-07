@@ -21,8 +21,7 @@ namespace OrdersManager.Views
     /// </summary>
     public partial class CustomerWindow : Window
     {
-        CustomerService customerService = new CustomerService();
-        MainWindow mainWindow = new MainWindow();
+        CustomerService customerService = new CustomerService();        
         public CustomerWindow()
         {
             InitializeComponent();
@@ -45,8 +44,7 @@ namespace OrdersManager.Views
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Save();
-            mainWindow.RefreshCustomer();
+            Save();            
             this.Close();
         }
     }
