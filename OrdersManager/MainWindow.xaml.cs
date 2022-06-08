@@ -33,11 +33,6 @@ namespace OrdersManager
             productGridControl.ItemsSource = db.Product.ToList();
         }       
 
-        private void btnOrder_Click(object sender, RoutedEventArgs e)
-        {
-            OrderWindow orderWindow = new OrderWindow();
-            orderWindow.ShowDialog();
-        }
 
         private void btnOpenAddCustomer_Click(object sender, RoutedEventArgs e)
         {
@@ -61,11 +56,33 @@ namespace OrdersManager
             orderWindow.ShowDialog();
         }  
 
+
+
+
         private void btnRefreshOrder_Click(object sender, RoutedEventArgs e)
         {
             orderGridControl.ItemsSource = db.Order.ToList();
             orderGridControl.Items.Refresh();
         }
+        private void btnRefreshCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            customerGridControl.ItemsSource = db.Customer.ToList();
+            customerGridControl.Items.Refresh();
+        }
+
+        private void btnRefreshSupplier_Click(object sender, RoutedEventArgs e)
+        {
+            supplierGridControl.ItemsSource = db.Supplier.ToList();
+            supplierGridControl.Items.Refresh();
+        }
+
+        private void btnRefreshProduct_Click(object sender, RoutedEventArgs e)
+        {
+            productGridControl.ItemsSource = db.Product.ToList();
+            productGridControl.Items.Refresh();
+        }
+
+
 
         private void orderGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -85,6 +102,6 @@ namespace OrdersManager
             orderUpdateWindow.ShowDialog();
         }
 
-        
+       
     }
 }

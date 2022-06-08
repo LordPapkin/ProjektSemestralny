@@ -13,12 +13,12 @@
         <Label Content="Phone Number" HorizontalAlignment="Left" Margin="30,210,0,0" VerticalAlignment="Top"/>
         <Label Content="Bank Name" HorizontalAlignment="Left" Margin="30,270,0,0" VerticalAlignment="Top"/>
         <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="30,330,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxCompanyName" HorizontalAlignment="Left" Margin="131,34,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Margin="80,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxNIP" HorizontalAlignment="Left" Margin="64,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxPhoneNumber" HorizontalAlignment="Left" Margin="126,214,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxBankName" HorizontalAlignment="Left" Margin="106,274,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxBankAccountNumber" HorizontalAlignment="Left" Margin="164,334,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAddSupplier" Content="Add new supplier" HorizontalAlignment="Left" Margin="30,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.162,0.585" Click="btnAddSupplier_Click" />
+        <TextBox x:Name="textBoxCompanyName" HorizontalAlignment="Left" Margin="131,34,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Margin="80,94,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxNIP" HorizontalAlignment="Left" Margin="64,154,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxPhoneNumber" HorizontalAlignment="Left" Margin="126,214,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxBankName" HorizontalAlignment="Left" Margin="106,274,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxBankAccountNumber" HorizontalAlignment="Left" Margin="164,334,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAddSupplier" Content="Add Supplier" HorizontalAlignment="Left" Margin="30,389,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.162,0.585" Click="btnAddSupplier_Click" />
     </Grid>
 </Window>
