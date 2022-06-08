@@ -122,12 +122,36 @@ namespace OrdersManager
 
         private void supplierGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var selectedItem = supplierGridControl.SelectedItem as Supplier;
 
+            SupplierModel model = new SupplierModel()
+            {
+                SupplierID = selectedItem.SupplierID,
+                CompanyName = selectedItem.CompanyName,
+                Adress = selectedItem.Adress,
+                NIP = selectedItem.NIP,
+                PhoneNumber = selectedItem.PhoneNumber,
+                BankName = selectedItem.BankName,
+                BankAccountNumber = selectedItem.BankAccountNumber
+            };
+            SupplierUpdateWindow supplierUpdateWindow = new SupplierUpdateWindow(model);
+            supplierUpdateWindow.ShowDialog();
         }
 
         private void productGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var selectedItem = productGridControl.SelectedItem as Product;
 
+            ProductModel model = new ProductModel()
+            {
+                ProductID = selectedItem.ProductID,
+                Name = selectedItem.Name,
+                PriceNetto = selectedItem.PriceNetto,
+                VAT = selectedItem.VAT,
+                PriceBrutto = selectedItem.PriceBrutto
+            };
+            ProductUpdateWindow productUpdateWindow = new ProductUpdateWindow(model);
+            productUpdateWindow.ShowDialog();
         }
     }
 }
