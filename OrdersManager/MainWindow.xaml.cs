@@ -102,6 +102,32 @@ namespace OrdersManager
             orderUpdateWindow.ShowDialog();
         }
 
-       
+        private void customerGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = customerGridControl.SelectedItem as Customer;
+
+            CustomerModel model = new CustomerModel()
+            {
+                CustomerID = selectedItem.CustomerID,
+                CompanyName = selectedItem.CompanyName,
+                Adress = selectedItem.Adress,
+                NIP = selectedItem.NIP,
+                PhoneNumber = selectedItem.PhoneNumber,
+                BankName = selectedItem.BankName,
+                BankAccountNumber = selectedItem.BankAccountNumber
+            };
+            CustomerUpdateWindow customerUpdateWindow = new CustomerUpdateWindow(model);
+            customerUpdateWindow.ShowDialog();
+        }
+
+        private void supplierGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void productGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

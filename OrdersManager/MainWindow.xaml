@@ -20,25 +20,25 @@
             <TabItem Header="Customers">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="btnOpenAddCustomer" Content="Add Customer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="btnOpenAddCustomer_Click" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnOpenRemoveCustomer" Content="Remove Order" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnOpenRemoveCustomer" Content="Remove Customer" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnRefreshCustomer" Content="Refresh" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="btnRefreshCustomer_Click"/>
-                    <DataGrid x:Name="customerGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
+                    <DataGrid x:Name="customerGridControl" Margin="160,10,40,111"  IsReadOnly="True" MouseDoubleClick="customerGridControl_MouseDoubleClick"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Suppliers">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="btnOpenAddSupplier" Content="Add Supplier" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddSupplier_Click"/>
-                    <Button x:Name="btnOpenRemoveSupplier" Content="Remove Order" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnOpenRemoveSupplier" Content="Remove Supplier" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnRefreshSupplier" Content="Refresh" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="btnRefreshSupplier_Click"/>
-                    <DataGrid x:Name="supplierGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
+                    <DataGrid x:Name="supplierGridControl" Margin="160,10,40,111"  IsReadOnly="True" MouseDoubleClick="supplierGridControl_MouseDoubleClick"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Product">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="btnOpenAddProduct" Content="Add Product" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Click="btnOpenAddProduct_Click"/>
-                    <Button x:Name="btnOpenRemoveProduct" Content="Remove Order" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnOpenRemoveProduct" Content="Remove Product" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnRefreshProduct" Content="Refresh" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Click="btnRefreshProduct_Click"/>
-                    <DataGrid x:Name="productGridControl" Margin="160,10,40,111"  IsReadOnly="True"/>
+                    <DataGrid x:Name="productGridControl" Margin="160,10,40,111"  IsReadOnly="True" MouseDoubleClick="productGridControl_MouseDoubleClick"/>
                 </Grid>
             </TabItem>
         </TabControl>
