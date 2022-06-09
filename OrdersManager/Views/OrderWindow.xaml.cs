@@ -26,6 +26,8 @@ namespace OrdersManager.Views
         ProductService productService = new ProductService();
         OrderService orderService = new OrderService();
 
+        public event Action RefreshOrder;
+
         public OrderWindow()
         {
             InitializeComponent();
@@ -35,6 +37,7 @@ namespace OrdersManager.Views
         private void btnAddOrder_Click(object sender, RoutedEventArgs e)
         {
             Save();
+            RefreshOrder?.Invoke();
             this.Close();
         }
 

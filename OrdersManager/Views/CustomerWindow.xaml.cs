@@ -27,25 +27,47 @@ namespace OrdersManager.Views
             InitializeComponent();
         }
 
-        private void Save()
+        private bool Save()
         {
-            Customer customer = new Customer()
+            if(Validation() == true)
             {
-                CompanyName = textBoxCompanyName.Text,
-                Adress = textBoxAdress.Text,
-                NIP = textBoxNIP.Text,
-                PhoneNumber = textBoxPhoneNumber.Text,
-                BankName = textBoxBankName.Text,
-                BankAccountNumber = textBoxBankAccountNumber.Text,
-            };
+                Customer customer = new Customer()
+                {
+                    CompanyName = textBoxCompanyName.Text,
+                    Adress = textBoxAdress.Text,
+                    NIP = textBoxNIP.Text,
+                    PhoneNumber = textBoxPhoneNumber.Text,
+                    BankName = textBoxBankName.Text,
+                    BankAccountNumber = textBoxBankAccountNumber.Text,
+                };
 
-            customerService.Save(customer);
+                customerService.Save(customer);
+                return true;
+            }
+            return false;
+        }
+
+        private bool Validation()
+        {
+            if(textBoxPhoneNumber.Text.Length != 9)
+            {
+                if (MessageBox.Show("Numer musi zawierać 9 znaków", "Numer telefonu", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                {
+                    return false;
+                }
+              
+            }
+
+            return true;
         }
 
         private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            Save();            
-            this.Close();
+            if(Save() == true)
+            {
+                this.Close();
+            }
+            
         }
     }
 }

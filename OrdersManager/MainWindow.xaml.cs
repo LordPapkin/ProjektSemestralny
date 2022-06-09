@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OrdersManager.DataBase;
 using OrdersManager.Models;
+using OrdersManager.Services;
 
 namespace OrdersManager
 {
@@ -24,14 +25,42 @@ namespace OrdersManager
     public partial class MainWindow : Window
     {
         OrdersEntities db = new OrdersEntities();
+
+        CustomerService customerService = new CustomerService();
+        SupplierService supplierService = new SupplierService();
+        ProductService productService = new ProductService();
+        OrderService orderService = new OrderService();        
+
         public MainWindow()
         {            
             InitializeComponent();
-            orderGridControl.ItemsSource = db.Order.ToList();
-            customerGridControl.ItemsSource = db.Customer.ToList();
+            orderGridControl.ItemsSource = orderService.PrepareDataToShow();
+            customerGridControl.ItemsSource = customerService.PrepareDataToShow();
             supplierGridControl.ItemsSource = db.Supplier.ToList();
-            productGridControl.ItemsSource = db.Product.ToList();
+            productGridControl.ItemsSource = productService.PrepareToShow();           
         }       
+
+        private void RefreshCustomer()
+        {
+            customerGridControl.ItemsSource = db.Customer.ToList();
+            customerGridControl.Items.Refresh();
+        }
+        private void RefreshSupplier()
+        {
+            supplierGridControl.ItemsSource = db.Supplier.ToList();
+            supplierGridControl.Items.Refresh();
+        }
+        private void RefreshProduct()
+        {
+            productGridControl.ItemsSource = db.Product.ToList();
+            productGridControl.Items.Refresh();
+        }
+        private void RefreshOrder()
+        {
+            orderGridControl.ItemsSource = orderService.PrepareDataToShow();
+            orderGridControl.Items.Refresh();
+        }
+
 
 
         private void btnOpenAddCustomer_Click(object sender, RoutedEventArgs e)
@@ -61,97 +90,94 @@ namespace OrdersManager
 
         private void btnRefreshOrder_Click(object sender, RoutedEventArgs e)
         {
-            orderGridControl.ItemsSource = db.Order.ToList();
-            orderGridControl.Items.Refresh();
+            RefreshOrder();
         }
         private void btnRefreshCustomer_Click(object sender, RoutedEventArgs e)
         {
-            customerGridControl.ItemsSource = db.Customer.ToList();
-            customerGridControl.Items.Refresh();
+            RefreshCustomer();
         }
-
         private void btnRefreshSupplier_Click(object sender, RoutedEventArgs e)
         {
-            supplierGridControl.ItemsSource = db.Supplier.ToList();
-            supplierGridControl.Items.Refresh();
+            RefreshSupplier();
         }
-
         private void btnRefreshProduct_Click(object sender, RoutedEventArgs e)
         {
-            productGridControl.ItemsSource = db.Product.ToList();
-            productGridControl.Items.Refresh();
+            RefreshProduct();
         }
 
 
 
         private void orderGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = orderGridControl.SelectedItem as Order;
-
-            OrderModel model = new OrderModel()
-            {
-                OrderID = selectedItem.OrderID,
-                CustomerID = selectedItem.CustomerID,
-                SupplierID = selectedItem.SupplierID,
-                ProductID = selectedItem.ProductID,
-                IsPaid = selectedItem.IsPay,
-                OrderDate = selectedItem.OrderDate
-            };
-
-            OrderUpdateWindow orderUpdateWindow = new OrderUpdateWindow(model);
+            var selectedItem = orderGridControl.SelectedItem as OrderModel;
+            OrderUpdateWindow orderUpdateWindow = new OrderUpdateWindow(selectedItem);
             orderUpdateWindow.ShowDialog();
         }
 
         private void customerGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = customerGridControl.SelectedItem as Customer;
-
-            CustomerModel model = new CustomerModel()
-            {
-                CustomerID = selectedItem.CustomerID,
-                CompanyName = selectedItem.CompanyName,
-                Adress = selectedItem.Adress,
-                NIP = selectedItem.NIP,
-                PhoneNumber = selectedItem.PhoneNumber,
-                BankName = selectedItem.BankName,
-                BankAccountNumber = selectedItem.BankAccountNumber
-            };
-            CustomerUpdateWindow customerUpdateWindow = new CustomerUpdateWindow(model);
+            var selectedItem = customerGridControl.SelectedItem as CustomerModel;
+            CustomerUpdateWindow customerUpdateWindow = new CustomerUpdateWindow(selectedItem);
             customerUpdateWindow.ShowDialog();
         }
 
         private void supplierGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = supplierGridControl.SelectedItem as Supplier;
-
-            SupplierModel model = new SupplierModel()
-            {
-                SupplierID = selectedItem.SupplierID,
-                CompanyName = selectedItem.CompanyName,
-                Adress = selectedItem.Adress,
-                NIP = selectedItem.NIP,
-                PhoneNumber = selectedItem.PhoneNumber,
-                BankName = selectedItem.BankName,
-                BankAccountNumber = selectedItem.BankAccountNumber
-            };
-            SupplierUpdateWindow supplierUpdateWindow = new SupplierUpdateWindow(model);
+            var selectedItem = supplierGridControl.SelectedItem as SupplierModel;
+            SupplierUpdateWindow supplierUpdateWindow = new SupplierUpdateWindow(selectedItem);
             supplierUpdateWindow.ShowDialog();
         }
 
         private void productGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var selectedItem = productGridControl.SelectedItem as ProductModel;
+            ProductUpdateWindow productUpdateWindow = new ProductUpdateWindow(selectedItem);
+            productUpdateWindow.ShowDialog();
+        }
+
+
+        private void btnOpenRemoveCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = customerGridControl.SelectedItem as Customer;
+
+            if(selectedItem != null)
+            {
+                customerService.Delete(selectedItem.CustomerID); 
+                RefreshCustomer();
+            }
+        }
+
+        private void btnOpenRemoveOrder_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = orderGridControl.SelectedItem as OrderModel;
+
+            if(selectedItem != null)
+            {
+                orderService.Delete(selectedItem.OrderID);
+                RefreshOrder();
+            }
+        }
+
+        private void btnOpenRemoveSupplier_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = supplierGridControl.SelectedItem as Supplier;
+
+            if(selectedItem != null)
+            {
+                supplierService.Delete(selectedItem.SupplierID);
+                RefreshSupplier();
+            }
+        }
+
+        private void btnOpenRemoveProduct_Click(object sender, RoutedEventArgs e)
+        {
             var selectedItem = productGridControl.SelectedItem as Product;
 
-            ProductModel model = new ProductModel()
+            if(selectedItem != null)
             {
-                ProductID = selectedItem.ProductID,
-                Name = selectedItem.Name,
-                PriceNetto = selectedItem.PriceNetto,
-                VAT = selectedItem.VAT,
-                PriceBrutto = selectedItem.PriceBrutto
-            };
-            ProductUpdateWindow productUpdateWindow = new ProductUpdateWindow(model);
-            productUpdateWindow.ShowDialog();
+                productService.Delete(selectedItem.ProductID);
+                RefreshProduct();
+            }
         }
     }
 }

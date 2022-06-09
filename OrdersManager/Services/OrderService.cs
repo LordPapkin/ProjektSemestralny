@@ -1,4 +1,5 @@
 ﻿using OrdersManager.DataBase;
+using OrdersManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +36,34 @@ namespace OrdersManager.Services
 
             db.SaveChanges();
         }      
-        public void Remove()
+        public void Delete(int id)
         {
+            Order order = db.Order.Find(id);
+            db.Order.Remove(order);
+            db.SaveChanges();
+        }
 
+        public List<OrderModel> PrepareDataToShow()
+        {
+            List<Order> items = db.Order.ToList();
+            List<OrderModel> orders = new List<OrderModel>();
+            foreach(Order item in items)
+            {
+                OrderModel model = new OrderModel()
+                {
+                    OrderID = item.OrderID,
+                    CustomerID = item.CustomerID,
+                    SupplierID = item.SupplierID,
+                    ProductID = item.ProductID,
+                    OrderDate = item.OrderDate,
+                    IsPaid = item.IsPay
+                };
+
+                orders.Add(model);
+
+            }
+
+            return orders;
         }
     }
 }
