@@ -68,24 +68,61 @@ namespace OrdersManager.Views
             comboBoxProduct.ItemsSource = productService.FindAll();
         }
 
-        private void Update()
+        private bool Update()
         {
-            var supplierId = comboBoxSupplier.SelectedItem as Supplier;
-            var customerId = comboBoxCustomer.SelectedItem as Customer;
-            var productId = comboBoxProduct.SelectedItem as Product;
-            Order order = new Order()
+            if (Validation())
             {
-                OrderID = _orderModel.OrderID,
-                SupplierID = supplierId.SupplierID,
-                CustomerID = customerId.CustomerID,
-                ProductID = productId.ProductID,
-                IsPay = Convert.ToByte(checkBoxOrderPaid.IsChecked.Value),
-                OrderDate = datePickerOrderDate.SelectedDate.Value
-            };
-
-            orderService.Update(order);
+                var supplierId = comboBoxSupplier.SelectedItem as Supplier;
+                var customerId = comboBoxCustomer.SelectedItem as Customer;
+                var productId = comboBoxProduct.SelectedItem as Product;
+                Order order = new Order()
+                {
+                    OrderID = _orderModel.OrderID,
+                    SupplierID = supplierId.SupplierID,
+                    CustomerID = customerId.CustomerID,
+                    ProductID = productId.ProductID,
+                    IsPay = Convert.ToByte(checkBoxOrderPaid.IsChecked.Value),
+                    OrderDate = datePickerOrderDate.SelectedDate.Value
+                };
+                orderService.Update(order);
+                return true;
+            }
+            return false;
         }
-
+        private bool Validation()
+        {
+            if (comboBoxCustomer.SelectedItem == null)
+            {
+                if (MessageBox.Show("Select customer!", "Customer", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (comboBoxSupplier.SelectedItem == null)
+            {
+                if (MessageBox.Show("Select supplier!", "Supplier", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (comboBoxProduct.SelectedItem == null)
+            {
+                if (MessageBox.Show("Select product!", "Product", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (checkBoxOrderPaid.IsChecked != true)
+            {
+                if (MessageBox.Show("Chceck checkbox!", "Płatność", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (datePickerOrderDate.SelectedDate == null)
+            {
+                if (MessageBox.Show("No date!", "DATA", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (datePickerOrderDate.SelectedDate < DateTime.Today)
+            {
+                if (MessageBox.Show("Wrong date!", "DATA", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            return true;
+        }
         private void comboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemCustomer = comboBoxCustomer.SelectedItem as Customer;
@@ -124,8 +161,8 @@ namespace OrdersManager.Views
 
         private void btnUpdateOrder_Click(object sender, RoutedEventArgs e)
         {
-            Update();
-            this.Close();
+            if(Update())
+                this.Close();
         }
     }
 }

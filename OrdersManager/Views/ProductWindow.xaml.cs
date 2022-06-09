@@ -22,6 +22,7 @@ namespace OrdersManager.Views
     public partial class ProductWindow : Window
     {
         ProductService productService = new ProductService();
+        UtilityService utilityService = new UtilityService();
         public ProductWindow()
         {
             InitializeComponent();
@@ -29,25 +30,71 @@ namespace OrdersManager.Views
         private decimal tempPriceNetto;
         private double tempVat;
 
-        private void Save()
+        private bool Save()
         {
-            tempPriceNetto = Convert.ToDecimal(textBoxPriceNetto.Text);
-            tempVat = Convert.ToDouble(textBoxVat.Text)/100f;
-            Product product = new Product()
-            {                     
-                Name = textBoxName.Text,
-                PriceNetto = tempPriceNetto,
-                VAT = tempVat,
-                PriceBrutto = (tempPriceNetto * (decimal)tempVat) + tempPriceNetto
-            };
-            
-            productService.Save(product);
-        }
+            if (Validation())
+            {
+                tempPriceNetto = Convert.ToDecimal(textBoxPriceNetto.Text);
+                tempVat = Convert.ToDouble(textBoxVat.Text) / 100f;
+                Product product = new Product()
+                {
+                    Name = textBoxName.Text,
+                    PriceNetto = tempPriceNetto,
+                    VAT = tempVat,
+                    PriceBrutto = (tempPriceNetto * (decimal)tempVat) + tempPriceNetto
+                };
 
+                productService.Save(product);
+                return true;
+            }
+            return false;
+        }
+        private bool Validation()
+        {
+            if (String.IsNullOrEmpty(textBoxName.Text))
+            {
+                if (MessageBox.Show("No name!", "Name", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+
+            if (String.IsNullOrEmpty(textBoxPriceNetto.Text))
+            {
+                if (MessageBox.Show("No price!", "Price", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (!utilityService.IsDigitsOnly(textBoxPriceNetto.Text))
+            {
+                if (MessageBox.Show("Price contains only digits. Enter correct data!", "Price", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+
+            if (String.IsNullOrEmpty(textBoxVat.Text))
+            {
+                if (MessageBox.Show("No VAT!", "VAT", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (!utilityService.IsDigitsOnly(textBoxVat.Text))
+            {
+                if (MessageBox.Show("VAT contains only digits. Enter correct data!", "VAT", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            if (textBoxVat.Text == "23" || textBoxVat.Text == "8" || textBoxVat.Text == "5" || textBoxVat.Text == "0")
+            {
+                return true;
+            }
+            else
+            {
+                if (MessageBox.Show("VAT value can be only 23/8/5/0", "VAT", MessageBoxButton.OK, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    return false;
+            }
+            return true;
+        }
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            Save();
-            this.Close();
+            if (Save())
+            {
+                this.Close();
+            }
         }
 
        

@@ -121,6 +121,7 @@
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\UtilityService.cs" />
     <Compile Include="Views\CustomerUpdateWindow.xaml.cs">
       <DependentUpon>CustomerUpdateWindow.xaml</DependentUpon>
     </Compile>

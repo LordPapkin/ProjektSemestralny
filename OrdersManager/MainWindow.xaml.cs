@@ -36,23 +36,23 @@ namespace OrdersManager
             InitializeComponent();
             orderGridControl.ItemsSource = orderService.PrepareDataToShow();
             customerGridControl.ItemsSource = customerService.PrepareDataToShow();
-            supplierGridControl.ItemsSource = db.Supplier.ToList();
+            supplierGridControl.ItemsSource = supplierService.PrepareDataToShow();
             productGridControl.ItemsSource = productService.PrepareToShow();           
         }       
 
         private void RefreshCustomer()
         {
-            customerGridControl.ItemsSource = db.Customer.ToList();
+            customerGridControl.ItemsSource = customerService.PrepareDataToShow();
             customerGridControl.Items.Refresh();
         }
         private void RefreshSupplier()
         {
-            supplierGridControl.ItemsSource = db.Supplier.ToList();
+            supplierGridControl.ItemsSource = supplierService.PrepareDataToShow();
             supplierGridControl.Items.Refresh();
         }
         private void RefreshProduct()
         {
-            productGridControl.ItemsSource = db.Product.ToList();
+            productGridControl.ItemsSource = productService.PrepareToShow();
             productGridControl.Items.Refresh();
         }
         private void RefreshOrder()
@@ -109,28 +109,28 @@ namespace OrdersManager
 
         private void orderGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = orderGridControl.SelectedItem as OrderModel;
+            OrderModel selectedItem = orderGridControl.SelectedItem as OrderModel;
             OrderUpdateWindow orderUpdateWindow = new OrderUpdateWindow(selectedItem);
             orderUpdateWindow.ShowDialog();
         }
 
         private void customerGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = customerGridControl.SelectedItem as CustomerModel;
+            CustomerModel selectedItem = customerGridControl.SelectedItem as CustomerModel;
             CustomerUpdateWindow customerUpdateWindow = new CustomerUpdateWindow(selectedItem);
             customerUpdateWindow.ShowDialog();
         }
 
         private void supplierGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = supplierGridControl.SelectedItem as SupplierModel;
+            SupplierModel selectedItem = supplierGridControl.SelectedItem as SupplierModel;
             SupplierUpdateWindow supplierUpdateWindow = new SupplierUpdateWindow(selectedItem);
             supplierUpdateWindow.ShowDialog();
         }
 
         private void productGridControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = productGridControl.SelectedItem as ProductModel;
+            ProductModel selectedItem = productGridControl.SelectedItem as ProductModel;
             ProductUpdateWindow productUpdateWindow = new ProductUpdateWindow(selectedItem);
             productUpdateWindow.ShowDialog();
         }
